@@ -1,14 +1,40 @@
 // Crear modelo a partir de SEQUELIZE
-/*
- * el modelo debe contener
- * id INTEGER
- * name STRING
- * price FLOAT
- * stock INTEGER
- * created_at DATETIME  - Lo crea SEQUELIZE automaticamente
- * updated_at DATETIME - Lo crea SEQUELIZE automaticamente
- *
- */
+import {Model, DataTypes} from "sequelize";
+import sequelize from "../config/db.mjs";
+
+class Producto extends Model{}
+
+Producto.init(
+    {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }, 
+    price: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+    },
+    stock:{
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+    },
+},
+{
+    sequelize, 
+    modelName: "Producto",
+    tableName: "productos",
+    timestamps: true,
+    underscored: true,
+}
+);
+
+export default Producto;
+
 // Guia https://sequelize.org/docs/v6/core-concepts/model-basics/
 // Opción Extending Model
 
