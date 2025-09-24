@@ -1,19 +1,13 @@
-// GUIA https://expressjs.com/en/guide/routing.html
-
-// Importar Express
 import express from "express";
 import sequelize from "./config/db.mjs";
 import Producto from "./models/products.mjs";
 
-// Crear servidor Express
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Agregar a express el soporte para JSON
 app.use(express.json());
 
 // RUTAS
-// Crear Ruta GET para obtener productos
 app.get("/productos", async (req, res) => {
     try{
         const productos = await Producto.findall();
@@ -23,7 +17,6 @@ app.get("/productos", async (req, res) => {
     }
 });
 
-// Crear Ruta POST para crear producto
 app.post("/productos", async(req, res) =>{
     try{
         const nuevoProducto = await Producto.creat(req.body);
@@ -33,7 +26,6 @@ app.post("/productos", async(req, res) =>{
     }
 })
 
-// Crear Ruta PUT para modificar producto
 app.put("/productos:id", async(req, res) => {
     try{
         const producto = await Producto.findByPk(req.params.id);
@@ -58,10 +50,6 @@ app.delete("/productos:id", async(req, res) => {
         res.status(500).json({error: "Error al eliminar un producto"});
     }
 });
-
-
-// Iniciar servidor express
-// Dentro de la función hay que agregar sequelize.sync()
 
 (async () => {
     try {
