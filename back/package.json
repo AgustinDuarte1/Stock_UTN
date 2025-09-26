@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
-  "author": "Federico Malfasi <federico.malfasi@gmail.com>",
+  "author": "Agustin Duarte",
   "type": "module",
   "main": "index.mjs",
   "scripts": {

@@ -1,4 +1,3 @@
-// Crear modelo a partir de SEQUELIZE
 import {Model, DataTypes} from "sequelize";
 import sequelize from "../config/db.mjs";
 
@@ -34,10 +33,6 @@ Producto.init(
 );
 
 export default Producto;
-
-// Guia https://sequelize.org/docs/v6/core-concepts/model-basics/
-// Opción Extending Model
-
 
 
 
